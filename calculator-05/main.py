@@ -2,7 +2,7 @@ from tkinter import *
 
 gui = Tk()
 gui.title('Simple Calculator')
-gui.geometry('800x600')
+gui.geometry('800x650')
 
 
 
@@ -12,14 +12,34 @@ def button_click(number):
   current = userInput.get()
   userInput.delete(0,END)
   userInput.insert(0,str(current)+str(number))
+  
+def clearScreen():
+  userInput.delete(0,END)
 
+def addition():
+  num1 = userInput.get()
+  global convNum1
+  convNum1 = int(num1)
+  userInput.delete(0,END)
 
+def finalAnswer():
+  num2 = userInput.get()
+  userInput.delete(0,END)
+  userInput.insert(0, convNum1 + int(num2))
 #input box
 userInput = Entry(gui,width=50,borderwidth=5)
-userInput.grid(row=0,column=0, columnspan=3, padx=5,pady=2)
+userInput.grid(row=0,column=0, columnspan=4, padx=5,pady=2)
 
 
 #creating buttons 
+
+add = Button(gui,text="+",padx=40,pady=40,command=addition)
+equal = Button(gui,text="=",padx=40,pady=40,command=finalAnswer)
+clear = Button(gui,text="CE",padx=40,pady=40,command=clearScreen)
+subtract = Button(gui,text="-",padx=40,pady=40)
+multiply = Button(gui,text="X",padx=40,pady=40)
+division = Button(gui,text='/',padx=40,pady=40)
+
 button_1 = Button(gui,text=1, padx=40,pady=40,command=lambda: button_click(1))
 button_2 = Button(gui,text=2, padx=40,pady=40,command=lambda: button_click(2))
 button_3 = Button(gui,text=3, padx=40,pady=40,command=lambda: button_click(3))
@@ -31,15 +51,14 @@ button_8 = Button(gui,text=8, padx=40,pady=40,command=lambda: button_click(8))
 button_9 = Button(gui,text=9, padx=40,pady=40,command=lambda: button_click(9))
 button_0 = Button(gui,text=0, padx=40,pady=40,command=lambda: button_click(0))
 
-add = Button(gui,text="+",padx=40,pady=40)
-equal = Button(gui,text="=",padx=40,pady=40)
-clear = Button(gui,text="CE",padx=40,pady=40)
 
 
 #puts the buttons on the screen
 #row 1
 clear.grid(row=1,column=1,padx=10,pady=10)
 add.grid(row=1,column=2,padx=10,pady=10)
+subtract.grid(row=1,column=0,padx=10,pady=10)
+multiply.grid(row=1,column=3,padx=10,pady=10)
 #row 2
 button_7.grid(row=2,column=0, padx=10,pady=10)
 button_8.grid(row=2,column=1, padx=10,pady=10)
@@ -58,5 +77,6 @@ button_3.grid(row=4,column=2, padx=10,pady=10)
 #row 5
 button_0.grid(row=5,column=1, padx=10,pady=10)
 equal.grid(row=5,column=2,padx=10,pady=10)
+division.grid(row=5,column=3,padx=10,pady=10)
 
 gui.mainloop()
