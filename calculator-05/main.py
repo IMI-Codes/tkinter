@@ -8,6 +8,56 @@ gui.geometry('800x650')
 
 #function definitions
 
+def addition():
+  global convNum1
+  global math
+  math = "addition"
+  num1 = userInput.get()
+  convNum1 = int(num1)
+  userInput.delete(0,END)
+
+def subtraction():
+  global math
+  global convNum1
+  math = 'subtraction'
+  num1 = userInput.get()
+  convNum1 = int(num1)
+  userInput.delete(0,END)
+  
+  
+
+def multiplication():
+  global math 
+  global convNum1
+  math = 'multiplication'
+  num1 = userInput.get()
+  convNum1 = int(num1)
+  userInput.delete(0,END)
+  
+
+def divide():
+  global math 
+  global convNum1
+  math = 'division'
+  num1 = userInput.get()
+  convNum1 = int(num1)
+  userInput.delete(0,END)
+  
+
+def finalAnswer():
+  num2 = userInput.get()
+  userInput.delete(0,END)
+  if math == "addition":
+    userInput.insert(0, convNum1 + int(num2))
+  elif math == "subtraction":
+    userInput.insert(0, convNum1 - int(num2))
+  elif math == 'division':
+    userInput.insert(0,convNum1 / int(num2))
+  elif math == 'multiplication':
+    userInput.insert(0,convNum1  * int(num2)) 
+    
+    
+
 def button_click(number):
   current = userInput.get()
   userInput.delete(0,END)
@@ -16,16 +66,6 @@ def button_click(number):
 def clearScreen():
   userInput.delete(0,END)
 
-def addition():
-  num1 = userInput.get()
-  global convNum1
-  convNum1 = int(num1)
-  userInput.delete(0,END)
-
-def finalAnswer():
-  num2 = userInput.get()
-  userInput.delete(0,END)
-  userInput.insert(0, convNum1 + int(num2))
 #input box
 userInput = Entry(gui,width=50,borderwidth=5)
 userInput.grid(row=0,column=0, columnspan=4, padx=5,pady=2)
@@ -36,9 +76,9 @@ userInput.grid(row=0,column=0, columnspan=4, padx=5,pady=2)
 add = Button(gui,text="+",padx=40,pady=40,command=addition)
 equal = Button(gui,text="=",padx=40,pady=40,command=finalAnswer)
 clear = Button(gui,text="CE",padx=40,pady=40,command=clearScreen)
-subtract = Button(gui,text="-",padx=40,pady=40)
-multiply = Button(gui,text="X",padx=40,pady=40)
-division = Button(gui,text='/',padx=40,pady=40)
+subtract = Button(gui,text="-",padx=40,pady=40,command=subtraction)
+multiply = Button(gui,text="X",padx=40,pady=40,command=multiplication)
+division = Button(gui,text='/',padx=40,pady=40,command=divide)
 
 button_1 = Button(gui,text=1, padx=40,pady=40,command=lambda: button_click(1))
 button_2 = Button(gui,text=2, padx=40,pady=40,command=lambda: button_click(2))
