@@ -1,1 +1,2 @@
-Name
+
+    GUI.update_idletasks()

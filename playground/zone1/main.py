@@ -1,16 +1,18 @@
 from customtkinter import *
-from tools.play import player
+
+
 
 GUI = CTk()
 GUI.title('Leveling Up')
-newPlayer = player()
 
 def setuserName():
   userName = userInput.get()
-  if len(userName) == 0:
+  if len(userName) == 0 or userName == "":
     return
   else:
     newPlayer.setPlayerName(userName)
+    welcomeMsg.configure(text=f"Hello {newPlayer.playerName}")
+    GUI.update_idletasks()
 #Components
 welcomeMsg = CTkLabel(master=GUI,text=f"Hello {newPlayer.playerName}",font=("Roboto",75))
 
