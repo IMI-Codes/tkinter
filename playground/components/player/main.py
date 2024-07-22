@@ -14,5 +14,4 @@ class Player :
       print("Success")
 
 
-newPlayer = Player()
-newPlayer.addStat("Strength",0)
+
